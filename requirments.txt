@@ -1,0 +1,10 @@
+fastapi
+httpx
+alembic
+SQLAlchemy
+pytest
+pytest-asyncio
+pytest-env
+pytest-cov
+python-dotenv
+Faker
