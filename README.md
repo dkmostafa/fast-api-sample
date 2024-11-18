@@ -15,3 +15,7 @@
 ## Migrate Database : 
     1 - alambic init
     2 - alembic upgrade head
+## Run Tests : 
+    pytest
+## Run Coverage Test : 
+    pytest --cov 
