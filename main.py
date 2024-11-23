@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from starlette.responses import JSONResponse
@@ -20,8 +21,6 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
             "errors": exc.errors(),
         },
     )
-
-
 @app.exception_handler(GenericException)
 async def generic_exception_handler(request: Request, exc: GenericException):
     return JSONResponse(
@@ -30,8 +29,6 @@ async def generic_exception_handler(request: Request, exc: GenericException):
             "error_message": exc.message,
         },
     )
-
-
 @app.exception_handler(NotFoundException)
 async def not_found_exception_handler(request: Request, exc: NotFoundException):
     return JSONResponse(
@@ -40,8 +37,6 @@ async def not_found_exception_handler(request: Request, exc: NotFoundException):
             "error_message": exc.message,
         },
     )
-
-
 @app.exception_handler(Exception)
 async def exception_handler(request: Request, exc: Exception):
     return JSONResponse(
@@ -55,3 +50,10 @@ async def exception_handler(request: Request, exc: Exception):
 @app.get("/health")
 def read_root():
     return {"hello world"}
+
+
+@app.get("/")
+def run_app():
+    x=1
+    print(x)
+    return {"hello app"}
